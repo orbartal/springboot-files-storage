@@ -3,9 +3,9 @@ package orbartal.demo.springboot.files.storage.api;
 import java.io.IOException;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,13 +24,13 @@ public class FileController {
 	}
 
 	@PostMapping(value = "/upload", consumes = { "multipart/form-data" })
-	@Operation(summary = "Upload a single File")
+	@Operation(summary = "Upload a file and get its new uid")
 	public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile uploadfile) {
 		return fileApp.writeFile(uploadfile);
 	}
 
-	@RequestMapping(path = "/download", method = RequestMethod.GET)
-	@Operation(summary = "Download a File")
+	@GetMapping("/download")
+	@Operation(summary = "Download a file using its uid")
 	public ResponseEntity<?> download(String fileName) throws IOException {
 		return fileApp.readFile(fileName);
 
