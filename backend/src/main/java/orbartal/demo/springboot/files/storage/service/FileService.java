@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.annotation.PostConstruct;
 import orbartal.demo.springboot.files.storage.model.DownloadFile;
+import orbartal.demo.springboot.files.storage.model.UploadFileResult;
 
 @Service
 public class FileService {
@@ -30,11 +31,12 @@ public class FileService {
 		dirValidator.validateDirPath(UPLOADED_FOLDER);
 	}
 
-	public void writeFile(MultipartFile file) throws IOException {
+	public UploadFileResult writeFile(MultipartFile file) throws IOException {
 		dirValidator.validateDirPath(UPLOADED_FOLDER);
 		byte[] bytes = file.getBytes();
 		Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
 		Files.write(path, bytes);
+		return new UploadFileResult(file.getOriginalFilename());
 	}
 
 	public DownloadFile readFile(String fileName) throws IOException {

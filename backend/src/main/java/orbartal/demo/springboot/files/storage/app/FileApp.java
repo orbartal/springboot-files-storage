@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import orbartal.demo.springboot.files.storage.model.DownloadFile;
+import orbartal.demo.springboot.files.storage.model.UploadFileResult;
 import orbartal.demo.springboot.files.storage.service.FileService;
 
 @Service
@@ -24,8 +25,8 @@ public class FileApp {
 	public ResponseEntity<?> writeFile(MultipartFile file) {
 		try {
 			MultipartFileValidator.validateMultipartFile(file);
-			fileService.writeFile(file);
-			return httpResponseFactory.buildSuccess(file);
+			UploadFileResult r = fileService.writeFile(file);
+			return httpResponseFactory.buildSuccess(r);
 		} catch (IOException e) {
 			return httpResponseFactory.buildBadRequest();
 		}

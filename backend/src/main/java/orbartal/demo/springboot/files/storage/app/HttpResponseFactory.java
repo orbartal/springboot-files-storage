@@ -3,9 +3,9 @@ package orbartal.demo.springboot.files.storage.app;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
 
 import orbartal.demo.springboot.files.storage.model.DownloadFile;
+import orbartal.demo.springboot.files.storage.model.UploadFileResult;
 
 @Component
 public class HttpResponseFactory {
@@ -24,8 +24,8 @@ public class HttpResponseFactory {
 		return httpResponseFactory.buildBadRequest();
 	}
 
-	public ResponseEntity<String> buildSuccess(MultipartFile file) {
-		return httpResponseFactory.buildSuccess(file);
+	public ResponseEntity<UploadFileResult> buildSuccess(UploadFileResult r) {
+		return httpResponseFactory.buildSuccess(r);
 	}
 
 	public ResponseEntity<?> buildFileResponse(DownloadFile response) {
