@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,10 +30,10 @@ public class FileController {
 		return fileApp.writeFile(uploadfile);
 	}
 
-	@GetMapping("/download")
+	@GetMapping("/download/{uid}")
 	@Operation(summary = "Download a file using its uid")
-	public ResponseEntity<?> download(String fileName) throws IOException {
-		return fileApp.readFile(fileName);
+	public ResponseEntity<?> download(@PathVariable String uid) throws IOException {
+		return fileApp.readFile(uid);
 
 	}
 
