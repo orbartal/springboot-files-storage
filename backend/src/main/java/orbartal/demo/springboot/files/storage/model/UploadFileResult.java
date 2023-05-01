@@ -2,18 +2,18 @@ package orbartal.demo.springboot.files.storage.model;
 
 public class UploadFileResult {
 
-	private String key;
+	private String uid;
 
-	public UploadFileResult(String key) {
-		this.key = key;
+	public UploadFileResult(String uid) {
+		this.uid = uid;
 	}
 
-	public String getKey() {
-		return key;
+	public String getUid() {
+		return uid;
 	}
 
-	public void setKey(String key) {
-		this.key = key;
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 
 }
