@@ -1,4 +1,4 @@
-package orbartal.demo.springboot.files.storage.api;
+package orbartal.demo.springboot.files.storage.model;
 
 import org.springframework.core.io.Resource;
 

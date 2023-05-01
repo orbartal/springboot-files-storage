@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import orbartal.demo.springboot.files.storage.api.FileResponse;
+import orbartal.demo.springboot.files.storage.model.FileResponse;
 import orbartal.demo.springboot.files.storage.service.FileService;
 
 @Service
