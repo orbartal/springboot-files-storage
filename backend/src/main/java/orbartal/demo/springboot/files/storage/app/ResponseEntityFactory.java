@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import orbartal.demo.springboot.files.storage.model.FileResponse;
+import orbartal.demo.springboot.files.storage.model.DownloadFile;
 
 @Component
 public class ResponseEntityFactory {
@@ -21,7 +21,7 @@ public class ResponseEntityFactory {
 		return new ResponseEntity<>("Successfully uploaded files: " + file.getName(), HttpStatus.OK);
 	}
 
-	public ResponseEntity<?> buildFileResponse(HttpHeaders headers, FileResponse response) {
+	public ResponseEntity<?> buildFileResponse(HttpHeaders headers, DownloadFile response) {
 		return ResponseEntity.ok()
 				.headers(headers)
 				.contentLength(response.getSizeInBytes())
