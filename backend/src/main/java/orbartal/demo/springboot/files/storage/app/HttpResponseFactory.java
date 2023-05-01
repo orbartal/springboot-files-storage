@@ -1,6 +1,5 @@
 package orbartal.demo.springboot.files.storage.app;
 
-import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -29,7 +28,7 @@ public class HttpResponseFactory {
 		return httpResponseFactory.buildSuccess(file);
 	}
 
-	public ResponseEntity<Resource> buildFileResponse(FileResponse response) {
+	public ResponseEntity<?> buildFileResponse(FileResponse response) {
 		HttpHeaders headers = httpHeadersFactory.buildDownloadHead(response.getName());
 		return httpResponseFactory.buildFileResponse(headers, response);
 	}

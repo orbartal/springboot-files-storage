@@ -1,16 +1,16 @@
 package orbartal.demo.springboot.files.storage.model;
 
-import org.springframework.core.io.Resource;
+import java.io.InputStream;
 
 public class FileResponse {
 
 	private String name;
-	private Resource body;
+	private InputStream body;
 	private Long sizeInBytes;
 
 	public FileResponse() {}
 
-	public FileResponse(String name, Resource body, Long sizeInBytes) {
+	public FileResponse(String name, InputStream body, Long sizeInBytes) {
 		this.name = name;
 		this.body = body;
 		this.sizeInBytes = sizeInBytes;
@@ -24,11 +24,11 @@ public class FileResponse {
 		this.name = name;
 	}
 
-	public Resource getBody() {
+	public InputStream getBody() {
 		return body;
 	}
 
-	public void setBody(Resource body) {
+	public void setBody(InputStream body) {
 		this.body = body;
 	}
 

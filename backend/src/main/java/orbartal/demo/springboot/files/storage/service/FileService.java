@@ -1,12 +1,12 @@
 package orbartal.demo.springboot.files.storage.service;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -40,8 +40,8 @@ public class FileService {
 	public FileResponse readFile(String fileName) throws IOException {
 		Path path = Paths.get(UPLOADED_FOLDER + fileName);
 		long fileSize = path.toFile().length();
-		Resource resource = new ByteArrayResource(Files.readAllBytes(path));
-		return new FileResponse(fileName, resource, fileSize);
+		InputStream body = new FileInputStream(path.toFile());
+		return new FileResponse(fileName, body, fileSize);
 	}
 
 }
