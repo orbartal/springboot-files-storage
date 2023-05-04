@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import orbartal.demo.springboot.files.storage.model.DownloadFile;
+import orbartal.demo.springboot.files.storage.model.DownloadFileResult;
 import orbartal.demo.springboot.files.storage.model.UploadFileResult;
 
 @Component
@@ -21,7 +21,7 @@ public class ResponseEntityFactory {
 		return new ResponseEntity<>(r, HttpStatus.OK);
 	}
 
-	public ResponseEntity<?> buildFileResponse(HttpHeaders headers, DownloadFile response) {
+	public ResponseEntity<?> buildFileResponse(HttpHeaders headers, DownloadFileResult response) {
 		return ResponseEntity.ok()
 				.headers(headers)
 				.contentLength(response.getSizeInBytes())

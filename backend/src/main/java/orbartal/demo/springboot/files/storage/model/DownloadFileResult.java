@@ -2,15 +2,15 @@ package orbartal.demo.springboot.files.storage.model;
 
 import java.io.InputStream;
 
-public class DownloadFile {
+public class DownloadFileResult {
 
 	private String name;
 	private InputStream body;
 	private Long sizeInBytes;
 
-	public DownloadFile() {}
+	public DownloadFileResult() {}
 
-	public DownloadFile(String name, InputStream body, Long sizeInBytes) {
+	public DownloadFileResult(String name, InputStream body, Long sizeInBytes) {
 		this.name = name;
 		this.body = body;
 		this.sizeInBytes = sizeInBytes;

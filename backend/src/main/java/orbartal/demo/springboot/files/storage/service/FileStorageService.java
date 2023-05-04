@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.annotation.PostConstruct;
-import orbartal.demo.springboot.files.storage.model.DownloadFile;
+import orbartal.demo.springboot.files.storage.model.DownloadFileResult;
 
 @Service
 public class FileStorageService {
@@ -38,11 +38,11 @@ public class FileStorageService {
 		return fileName;
 	}
 
-	public DownloadFile readFile(String fileName) throws IOException {
+	public DownloadFileResult readFile(String fileName) throws IOException {
 		Path path = Paths.get(UPLOADED_FOLDER + fileName);
 		long fileSize = path.toFile().length();
 		InputStream body = new FileInputStream(path.toFile());
-		return new DownloadFile(fileName, body, fileSize);
+		return new DownloadFileResult(fileName, body, fileSize);
 	}
 
 }

@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import orbartal.demo.springboot.files.storage.model.DownloadFile;
+import orbartal.demo.springboot.files.storage.model.DownloadFileResult;
 import orbartal.demo.springboot.files.storage.model.UploadFileResult;
 import orbartal.demo.springboot.files.storage.service.FileService;
 
@@ -34,7 +34,7 @@ public class FileApp {
 
 	public ResponseEntity<?> readFile(String fileName) {
 		try {
-			DownloadFile response = fileService.readFile(fileName);
+			DownloadFileResult response = fileService.readFile(fileName);
 			return httpResponseFactory.buildFileResponse(response);
 		} catch (IOException e) {
 			return httpResponseFactory.buildBadRequest();

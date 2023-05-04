@@ -6,7 +6,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import orbartal.demo.springboot.files.storage.model.DownloadFile;
+import orbartal.demo.springboot.files.storage.model.DownloadFileResult;
 import orbartal.demo.springboot.files.storage.model.FileMetaData;
 import orbartal.demo.springboot.files.storage.model.UploadFileResult;
 
@@ -28,7 +28,7 @@ public class FileService {
 		return new UploadFileResult(metaData.getUid().toString());
 	}
 
-	public DownloadFile readFile(String suid) throws IOException {
+	public DownloadFileResult readFile(String suid) throws IOException {
 		UUID uuid = UUID.fromString(suid);
 		FileMetaData metaData = fileMetadata.readFileMetaDataByUid(uuid);
 		return fileStorage.readFile(metaData.getKey());
