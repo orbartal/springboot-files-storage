@@ -1,4 +1,4 @@
-package orbartal.demo.springboot.files.storage.service;
+package orbartal.demo.springboot.files.storage.file.storage;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.annotation.PostConstruct;
-import orbartal.demo.springboot.files.storage.model.DownloadFileResult;
+import orbartal.demo.springboot.files.storage.file.model.DownloadFileResult;
 
 @Service
 @ConditionalOnProperty(value="file.storage.service",havingValue = "local.filesystem.temp")

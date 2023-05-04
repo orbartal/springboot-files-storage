@@ -1,4 +1,4 @@
-package orbartal.demo.springboot.files.storage.service;
+package orbartal.demo.springboot.files.storage.file.storage;
 
 import java.io.File;
 

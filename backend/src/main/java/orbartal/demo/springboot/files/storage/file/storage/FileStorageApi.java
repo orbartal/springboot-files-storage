@@ -1,10 +1,10 @@
-package orbartal.demo.springboot.files.storage.service;
+package orbartal.demo.springboot.files.storage.file.storage;
 
 import java.io.IOException;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import orbartal.demo.springboot.files.storage.model.DownloadFileResult;
+import orbartal.demo.springboot.files.storage.file.model.DownloadFileResult;
 
 public interface FileStorageApi {
 

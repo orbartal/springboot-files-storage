@@ -1,4 +1,4 @@
-package orbartal.demo.springboot.files.storage.model;
+package orbartal.demo.springboot.files.storage.file.model;
 
 import java.util.UUID;
 

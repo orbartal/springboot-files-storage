@@ -6,9 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import orbartal.demo.springboot.files.storage.model.DownloadFileResult;
-import orbartal.demo.springboot.files.storage.model.UploadFileResult;
-import orbartal.demo.springboot.files.storage.service.FileService;
+import orbartal.demo.springboot.files.storage.file.manager.FileService;
+import orbartal.demo.springboot.files.storage.file.model.DownloadFileResult;
+import orbartal.demo.springboot.files.storage.file.model.UploadFileResult;
 
 @Service
 public class FileApp {

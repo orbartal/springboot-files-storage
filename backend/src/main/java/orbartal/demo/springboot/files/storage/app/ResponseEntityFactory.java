@@ -7,8 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import orbartal.demo.springboot.files.storage.model.DownloadFileResult;
-import orbartal.demo.springboot.files.storage.model.UploadFileResult;
+import orbartal.demo.springboot.files.storage.file.model.DownloadFileResult;
+import orbartal.demo.springboot.files.storage.file.model.UploadFileResult;
 
 @Component
 public class ResponseEntityFactory {

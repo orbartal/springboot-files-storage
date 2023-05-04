@@ -1,4 +1,4 @@
-package orbartal.demo.springboot.files.storage.service;
+package orbartal.demo.springboot.files.storage.file.manager;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -6,9 +6,11 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import orbartal.demo.springboot.files.storage.model.DownloadFileResult;
-import orbartal.demo.springboot.files.storage.model.FileMetaData;
-import orbartal.demo.springboot.files.storage.model.UploadFileResult;
+import orbartal.demo.springboot.files.storage.file.metadata.FileMetadataApi;
+import orbartal.demo.springboot.files.storage.file.model.DownloadFileResult;
+import orbartal.demo.springboot.files.storage.file.model.FileMetaData;
+import orbartal.demo.springboot.files.storage.file.model.UploadFileResult;
+import orbartal.demo.springboot.files.storage.file.storage.FileStorageApi;
 
 @Service
 public class FileService {
