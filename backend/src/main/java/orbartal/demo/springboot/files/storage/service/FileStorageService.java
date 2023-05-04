@@ -14,7 +14,7 @@ import jakarta.annotation.PostConstruct;
 import orbartal.demo.springboot.files.storage.model.DownloadFileResult;
 
 @Service
-public class FileStorageService {
+public class FileStorageService implements FileStorageApi {
 
 	private static String UPLOADED_FOLDER = "/tmp/uploads/";
 
@@ -30,6 +30,7 @@ public class FileStorageService {
 		dirValidator.validateDirPath(UPLOADED_FOLDER);
 	}
 
+	@Override
 	public String writeFile(MultipartFile file) throws IOException {
 		byte[] bytes = file.getBytes();
 		String fileName = file.getOriginalFilename();
@@ -38,6 +39,7 @@ public class FileStorageService {
 		return fileName;
 	}
 
+	@Override
 	public DownloadFileResult readFile(String fileName) throws IOException {
 		Path path = Paths.get(UPLOADED_FOLDER + fileName);
 		long fileSize = path.toFile().length();
