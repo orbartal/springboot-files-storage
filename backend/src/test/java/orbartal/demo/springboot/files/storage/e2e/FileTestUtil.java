@@ -32,12 +32,20 @@ public class FileTestUtil {
 	public static String buildUploadUrl(int serverPort) {
 		return "http://localhost:" + serverPort + "/api/v1/file" + "/upload";
 	}
+	
+	public static String buildDownloadUrl(int serverPort, String suid) {
+		return "http://localhost:" + serverPort + "/api/v1/file" + "/download/" + suid;
+	}
 
 	public static Response uploadFile(File inputFile, String url) {
 		return RestAssured.given()
 				.contentType(MULTIPART_FORM_DATA_VALUE)
 				.multiPart("file", inputFile)
 				.request(Method.POST, url);
+	}
+	
+	public static Response downloadFile(String url) {
+		return RestAssured.given().when().get(url).andReturn();
 	}
 
 }
