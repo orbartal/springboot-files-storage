@@ -14,9 +14,9 @@ import orbartal.demo.springboot.files.storage.model.UploadFileResult;
 public class FileService {
 
 	private final FileStorageService fileStorage;
-	private final FileMetadataService fileMetadata;
+	private final FileMetadataApi fileMetadata;
 
-	public FileService(FileStorageService fileStorage, FileMetadataService fileMetadata) {
+	public FileService(FileStorageService fileStorage, FileMetadataApi fileMetadata) {
 		this.fileStorage = fileStorage;
 		this.fileMetadata = fileMetadata;
 	}
