@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,6 +15,7 @@ import jakarta.annotation.PostConstruct;
 import orbartal.demo.springboot.files.storage.model.DownloadFileResult;
 
 @Service
+@ConditionalOnProperty(value="file.storage.service",havingValue = "local.filesystem.temp")
 public class FileStorageService implements FileStorageApi {
 
 	private static String UPLOADED_FOLDER = "/tmp/uploads/";

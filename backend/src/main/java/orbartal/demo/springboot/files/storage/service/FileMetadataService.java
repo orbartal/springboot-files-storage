@@ -4,11 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import orbartal.demo.springboot.files.storage.model.FileMetaData;
 
 @Service
+@ConditionalOnProperty(value="file.metadata.service",havingValue = "java.in.memory.map")
 public class FileMetadataService implements FileMetadataApi {
 
 	private Map<UUID, FileMetaData> uidToKey = new HashMap<>(); // Temp solution in memeory
