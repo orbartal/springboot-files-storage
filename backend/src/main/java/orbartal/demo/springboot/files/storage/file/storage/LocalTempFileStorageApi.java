@@ -16,13 +16,13 @@ import orbartal.demo.springboot.files.storage.file.model.DownloadFileResult;
 
 @Service
 @ConditionalOnProperty(value="file.storage.service",havingValue = "local.filesystem.temp")
-public class FileStorageService implements FileStorageApi {
+public class LocalTempFileStorageApi implements FileStorageApi {
 
 	private static String UPLOADED_FOLDER = "/tmp/uploads/";
 
 	private final DirValidator dirValidator;
 
-	public FileStorageService(DirValidator dirValidator) {
+	public LocalTempFileStorageApi(DirValidator dirValidator) {
 		this.dirValidator = dirValidator;
 	}
 
