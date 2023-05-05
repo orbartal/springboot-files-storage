@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
 @RedisHash("file_metadata")
-public class FileMetadataRedisEntity {
+public class RedisFileMetadataEntity {
 
 	@Id
 	// universally unique identifier used in the api

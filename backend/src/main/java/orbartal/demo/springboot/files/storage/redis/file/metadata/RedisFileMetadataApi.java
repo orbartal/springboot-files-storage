@@ -14,21 +14,21 @@ import orbartal.demo.springboot.files.storage.file.model.FileMetaData;
 @Service
 @Transactional
 @ConditionalOnProperty(value = "file.metadata.service", havingValue = "redis")
-public class FileMetadataRedis implements FileMetadataApi {
+public class RedisFileMetadataApi implements FileMetadataApi {
 
 	@Autowired
-	private FileMetadataRedisRepository redisRepository;
+	private RedisFileMetadataRepository redisRepository;
 
 	@Transactional(readOnly = false)
 	@Override
 	public void writeFileMetaData(FileMetaData metaData) {
 		UUID uuid = metaData.getUid();
 		String value = metaData.getKey();
-		Optional<FileMetadataRedisEntity> pOldEntitiy = redisRepository.findById(uuid);
+		Optional<RedisFileMetadataEntity> pOldEntitiy = redisRepository.findById(uuid);
 		if (pOldEntitiy != null && pOldEntitiy.isPresent()) {
 			throw new RuntimeException("Duplicate uuid: " + metaData.getUid());
 		}
-		FileMetadataRedisEntity newEntitiy = new FileMetadataRedisEntity();
+		RedisFileMetadataEntity newEntitiy = new RedisFileMetadataEntity();
 		newEntitiy.setUid(uuid);
 		newEntitiy.setValue(value);
 		redisRepository.save(newEntitiy);
@@ -37,9 +37,9 @@ public class FileMetadataRedis implements FileMetadataApi {
 	@Transactional(readOnly = true)
 	@Override
 	public FileMetaData readFileMetaDataByUid(UUID uid) {
-		Optional<FileMetadataRedisEntity> opt = redisRepository.findById(uid);
+		Optional<RedisFileMetadataEntity> opt = redisRepository.findById(uid);
 		if (opt.isPresent()) {
-			FileMetadataRedisEntity e = opt.get();
+			RedisFileMetadataEntity e = opt.get();
 			return new FileMetaData(e.getUid(), e.getValue());
 		}
 		return null;

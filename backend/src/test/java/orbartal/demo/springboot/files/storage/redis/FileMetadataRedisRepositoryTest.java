@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import orbartal.demo.springboot.files.storage.redis.file.metadata.FileMetadataRedisEntity;
-import orbartal.demo.springboot.files.storage.redis.file.metadata.FileMetadataRedisRepository;
+import orbartal.demo.springboot.files.storage.redis.file.metadata.RedisFileMetadataEntity;
+import orbartal.demo.springboot.files.storage.redis.file.metadata.RedisFileMetadataRepository;
 
 @TestMethodOrder(OrderAnnotation.class)
 @ExtendWith(SpringExtension.class)
@@ -26,12 +26,12 @@ public class FileMetadataRedisRepositoryTest {
 	private static final String VALUE = UUID.randomUUID().toString().replaceAll("-", "");
 
 	@Autowired
-	private FileMetadataRedisRepository redisRepository;
+	private RedisFileMetadataRepository redisRepository;
 
 	@Order(1)
 	@Test
 	public void readFromRedisNotFound() {
-		Optional<FileMetadataRedisEntity> out = redisRepository.findById(UID);
+		Optional<RedisFileMetadataEntity> out = redisRepository.findById(UID);
 		Assertions.assertNotNull(out);
 		Assertions.assertFalse(out.isPresent());
 	}
@@ -39,11 +39,11 @@ public class FileMetadataRedisRepositoryTest {
 	@Order(2)
 	@Test
 	public void writeToRedis() {
-		FileMetadataRedisEntity input = new FileMetadataRedisEntity();
+		RedisFileMetadataEntity input = new RedisFileMetadataEntity();
 		input.setUid(UID);
 		input.setValue(VALUE);
 
-		FileMetadataRedisEntity out = redisRepository.save(input);
+		RedisFileMetadataEntity out = redisRepository.save(input);
 
 		Assertions.assertNotNull(out);
 		Assertions.assertEquals(UID, out.getUid());
@@ -53,7 +53,7 @@ public class FileMetadataRedisRepositoryTest {
 	@Order(3)
 	@Test
 	public void readFromRedisFound() {
-		Optional<FileMetadataRedisEntity> out = redisRepository.findById(UID);
+		Optional<RedisFileMetadataEntity> out = redisRepository.findById(UID);
 		Assertions.assertNotNull(out);
 		Assertions.assertTrue(out.isPresent());
 		Assertions.assertEquals(UID, out.get().getUid());

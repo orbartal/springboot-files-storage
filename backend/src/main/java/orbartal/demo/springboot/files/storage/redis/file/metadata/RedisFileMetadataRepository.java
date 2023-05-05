@@ -4,6 +4,6 @@ import java.util.UUID;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface FileMetadataRedisRepository extends CrudRepository<FileMetadataRedisEntity, UUID> {
+public interface RedisFileMetadataRepository extends CrudRepository<RedisFileMetadataEntity, UUID> {
 
 }
