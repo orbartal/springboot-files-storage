@@ -10,6 +10,6 @@ public interface FileStorageApi {
 
 	String writeFile(MultipartFile file) throws IOException;
 
-	DownloadFileResult readFile(String fileName) throws IOException;
+	DownloadFileResult readFile(String fileIdInStorage) throws IOException;
 
 }
