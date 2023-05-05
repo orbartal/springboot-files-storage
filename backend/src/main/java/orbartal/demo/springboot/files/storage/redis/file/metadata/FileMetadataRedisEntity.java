@@ -1,4 +1,4 @@
-package orbartal.demo.springboot.files.storage.redis.persistence;
+package orbartal.demo.springboot.files.storage.redis.file.metadata;
 
 import java.util.UUID;
 import org.springframework.data.annotation.Id;

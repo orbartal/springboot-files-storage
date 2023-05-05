@@ -10,8 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import orbartal.demo.springboot.files.storage.file.metadata.FileMetadataApi;
 import orbartal.demo.springboot.files.storage.file.model.FileMetaData;
-import orbartal.demo.springboot.files.storage.redis.persistence.FileMetadataRedisEntity;
-import orbartal.demo.springboot.files.storage.redis.persistence.FileMetadataRedisRepository;
 
 @Service
 @Transactional

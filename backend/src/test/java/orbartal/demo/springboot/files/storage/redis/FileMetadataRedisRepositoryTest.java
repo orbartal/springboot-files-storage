@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import orbartal.demo.springboot.files.storage.redis.persistence.FileMetadataRedisEntity;
-import orbartal.demo.springboot.files.storage.redis.persistence.FileMetadataRedisRepository;
+import orbartal.demo.springboot.files.storage.redis.file.metadata.FileMetadataRedisEntity;
+import orbartal.demo.springboot.files.storage.redis.file.metadata.FileMetadataRedisRepository;
 
 @TestMethodOrder(OrderAnnotation.class)
 @ExtendWith(SpringExtension.class)
