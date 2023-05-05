@@ -11,7 +11,7 @@ import orbartal.demo.springboot.files.storage.file.model.FileMetaData;
 
 @Service
 @ConditionalOnProperty(value="file.metadata.service",havingValue = "java.in.memory.map")
-public class FileMetadataService implements FileMetadataApi {
+public class MapInMemoryFileMetadataApi implements FileMetadataApi {
 
 	private Map<UUID, FileMetaData> uidToKey = new HashMap<>(); // Temp solution in memeory
 
