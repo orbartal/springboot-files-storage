@@ -33,6 +33,7 @@ public class RedisFileStorageApi implements FileStorageApi {
 		}
 		RedisFileContentEntity newEntitiy = new RedisFileContentEntity();
 		newEntitiy.setUid(uuid);
+		newEntitiy.setName(file.getOriginalFilename());
 		newEntitiy.setValue(value);
 		redisRepository.save(newEntitiy);
 		return uuid.toString();
@@ -44,7 +45,7 @@ public class RedisFileStorageApi implements FileStorageApi {
 		Optional<RedisFileContentEntity> opt = redisRepository.findById(uuid);
 		if (opt.isPresent()) {
 			RedisFileContentEntity e = opt.get();
-			String name = "TODO";
+			String name = e.getName();
 			Long sizeInBytes = (long) e.getValue().length;
 			InputStream body = new ByteArrayInputStream(e.getValue());
 			return new DownloadFileResult(name, body, sizeInBytes);

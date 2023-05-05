@@ -11,9 +11,12 @@ public class RedisFileContentEntity {
 	@Id
 	// universally unique identifier used in the api
 	private UUID uid;
-	
+
+	private String name;
+
 	//The value is a byte array of file content. Please notice this can only work for small files.
 	private byte[] value;
+	
 
 	public UUID getUid() {
 		return uid;
@@ -21,6 +24,14 @@ public class RedisFileContentEntity {
 
 	public void setUid(UUID uid) {
 		this.uid = uid;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public byte[] getValue() {
@@ -34,7 +45,7 @@ public class RedisFileContentEntity {
 	@Override
 	public String toString() {
 		int valueSize = (value!=null)? value.length : 0;
-		return "FileMetadataRedisEntity [uid=" + uid + ", valueSize =" + valueSize + "]";
+		return "FileMetadataRedisEntity [uid=" + uid + ", valueSize =" + valueSize  + ", name =" + name + "]";
 	}
 
 }
