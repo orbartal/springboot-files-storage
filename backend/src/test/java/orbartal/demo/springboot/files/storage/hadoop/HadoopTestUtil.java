@@ -7,7 +7,7 @@ import io.restassured.response.Response;
 
 public class HadoopTestUtil {
 
-	private static final String MULTIPART_MIXED = "multipart/mixed";
+	private static final String APPLICATION_OCTET_STREAM = "application/octet-stream";
 	
 	public static String buildCreateFileUrl(String nodeNameHost, int nodeNamePort, String hdfsPath) {
 		StringBuilder sb = new StringBuilder();
@@ -24,9 +24,29 @@ public class HadoopTestUtil {
 
 	public static Response uploadFilePut(File file, String url) {
 		return RestAssured.given()
-				.contentType(MULTIPART_MIXED)
-				.multiPart(file)
+				.contentType(APPLICATION_OCTET_STREAM)
+				.body(file)
 				.put(url);
+	}
+
+	public static String buildReadFileUrl(String nodeNameHost, int nodeNamePort, String hdfsPath) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("http://");
+		sb.append(nodeNameHost);
+		sb.append(":");
+		sb.append(nodeNamePort);
+		sb.append("/webhdfs/v1");
+		sb.append(hdfsPath);
+		sb.append("?op=OPEN");
+		return sb.toString();
+	}
+
+	public static Response downloadFile(String url) {
+		return RestAssured.given()
+				.contentType(APPLICATION_OCTET_STREAM)
+				.when()
+				.get(url)
+				.andReturn();
 	}
 
 }
