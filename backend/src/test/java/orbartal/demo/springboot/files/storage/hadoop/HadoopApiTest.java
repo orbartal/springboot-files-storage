@@ -35,10 +35,12 @@ public class HadoopApiTest {
 	private static Optional<String> urlToDownloadFile = Optional.empty();
 	private static Optional<File> fileToDownload = Optional.empty();
 
+	private static String HADOOP_NAME_NODE_URL = "http://namenode:9870";
+
 	@Order(1)
 	@Test
 	public void testGetUploadLinkFromHadoopNameNode() throws Exception {
-		String url = HadoopTestUtil.buildCreateFileUrl("namenode", 9870, HDFS_FILE_PATH);
+		String url = HadoopTestUtil.buildCreateFileUrl(HADOOP_NAME_NODE_URL, HDFS_FILE_PATH);
 		Response response = RestAssured.given().when().put(url).andReturn();
 
 		Assertions.assertNotNull(response);
@@ -79,7 +81,7 @@ public class HadoopApiTest {
 	@Order(4)
 	@Test
 	public void testGetDownloadLinkFromNameNode() throws Exception {
-		String url = HadoopTestUtil.buildReadFileUrl("namenode", 9870, HDFS_FILE_PATH);
+		String url = HadoopTestUtil.buildReadFileUrl(HADOOP_NAME_NODE_URL, HDFS_FILE_PATH);
 		Response response = RestAssured.given().redirects().follow(false).head(url).andReturn();
 
 		Assertions.assertNotNull(response);

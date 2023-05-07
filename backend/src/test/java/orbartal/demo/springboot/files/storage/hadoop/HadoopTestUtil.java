@@ -9,12 +9,9 @@ public class HadoopTestUtil {
 
 	private static final String APPLICATION_OCTET_STREAM = "application/octet-stream";
 	
-	public static String buildCreateFileUrl(String nodeNameHost, int nodeNamePort, String hdfsPath) {
+	public static String buildCreateFileUrl(String nodeNameUrl, String hdfsPath) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("http://");
-		sb.append(nodeNameHost);
-		sb.append(":");
-		sb.append(nodeNamePort);
+		sb.append(nodeNameUrl);
 		sb.append("/webhdfs/v1");
 		sb.append(hdfsPath);
 		sb.append("?op=CREATE");
@@ -29,12 +26,9 @@ public class HadoopTestUtil {
 				.put(url);
 	}
 
-	public static String buildReadFileUrl(String nodeNameHost, int nodeNamePort, String hdfsPath) {
+	public static String buildReadFileUrl(String nodeNameUrl, String hdfsPath) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("http://");
-		sb.append(nodeNameHost);
-		sb.append(":");
-		sb.append(nodeNamePort);
+		sb.append(nodeNameUrl);
 		sb.append("/webhdfs/v1");
 		sb.append(hdfsPath);
 		sb.append("?op=OPEN");
