@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import orbartal.demo.springboot.files.storage.e2e.FileTestUtil;
+import orbartal.demo.springboot.files.storage.hadoop.config.HadoopProptiesProvider;
 
 /**
  * Warning: you must run Apache Hadoop using external tool (for example docker-compose) before running this test.
@@ -27,7 +28,7 @@ public class HadoopApiTest {
 	private static final String DOWNLOAD_FILE_NAME = UUID.randomUUID().toString().replaceAll("-", "");
 	private static final String FILE_NAME = UUID.randomUUID().toString().replaceAll("-", "");
 	private static final String FILE_TEXT = UUID.randomUUID().toString().replaceAll("-", "");
-	private static final String HDFS_DIR = "/user/root/output/";
+	private static final String HDFS_DIR = HadoopProptiesProvider.getPropties().getHdfsDir();
 	private static final String HDFS_FILE_PATH = HDFS_DIR + FILE_NAME + ".txt";
 
 	private static Optional<String> urlToUploadFile = Optional.empty();
@@ -35,7 +36,7 @@ public class HadoopApiTest {
 	private static Optional<String> urlToDownloadFile = Optional.empty();
 	private static Optional<File> fileToDownload = Optional.empty();
 
-	private static String HADOOP_NAME_NODE_URL = "http://namenode:9870";
+	private static String HADOOP_NAME_NODE_URL = HadoopProptiesProvider.getPropties().getNodeNameUrl();
 
 	@Order(1)
 	@Test
