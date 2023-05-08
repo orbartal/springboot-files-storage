@@ -31,6 +31,7 @@ public class RedisFileMetadataApi implements FileMetadataApi {
 		RedisFileMetadataEntity newEntitiy = new RedisFileMetadataEntity();
 		newEntitiy.setUid(uuid);
 		newEntitiy.setValue(value);
+		newEntitiy.setFileName(value);
 		redisRepository.save(newEntitiy);
 	}
 
@@ -40,7 +41,7 @@ public class RedisFileMetadataApi implements FileMetadataApi {
 		Optional<RedisFileMetadataEntity> opt = redisRepository.findById(uid);
 		if (opt.isPresent()) {
 			RedisFileMetadataEntity e = opt.get();
-			return new FileMetaData(e.getUid(), e.getValue());
+			return new FileMetaData(e.getUid(), e.getValue(), e.getFileName());
 		}
 		return null;
 	}

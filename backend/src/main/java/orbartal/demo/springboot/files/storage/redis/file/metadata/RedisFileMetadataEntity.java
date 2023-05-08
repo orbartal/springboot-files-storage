@@ -11,8 +11,12 @@ public class RedisFileMetadataEntity {
 	@Id
 	// universally unique identifier used in the api
 	private UUID uid;
+
 	//The value is a string but can easily modify to any other type of data we want to store.
 	private String value;
+	
+	//TODO: Modify value into key
+	private String fileName;
 
 	public UUID getUid() {
 		return uid;
@@ -30,9 +34,17 @@ public class RedisFileMetadataEntity {
 		this.value = value;
 	}
 
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	@Override
 	public String toString() {
-		return "FileMetadataRedisEntity [uid=" + uid + ", value=" + value + "]";
+		return "RedisFileMetadataEntity [uid=" + uid + ", value=" + value + ", fileName=" + fileName + "]";
 	}
 
 }

@@ -25,7 +25,7 @@ public class FileService {
 
 	public UploadFileResult writeFile(MultipartFile file) throws IOException {
 		String key = fileStorage.writeFile(file);
-		FileMetaData metaData = new FileMetaData(UUID.randomUUID(), key);
+		FileMetaData metaData = new FileMetaData(UUID.randomUUID(), key, file.getOriginalFilename());
 		fileMetadata.writeFileMetaData(metaData);
 		return new UploadFileResult(metaData.getUid().toString());
 	}

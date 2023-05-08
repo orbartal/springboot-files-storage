@@ -6,10 +6,12 @@ public class FileMetaData {
 
 	private final UUID uid;
 	private final String key;
+	private final String fileName;
 
-	public FileMetaData(UUID uid, String key) {
+	public FileMetaData(UUID uid, String key, String fileName) {
 		this.uid = uid;
 		this.key = key;
+		this.fileName = fileName;
 	}
 
 	public UUID getUid() {
@@ -18,6 +20,10 @@ public class FileMetaData {
 
 	public String getKey() {
 		return key;
+	}
+
+	public String getFileName() {
+		return fileName;
 	}
 
 }
