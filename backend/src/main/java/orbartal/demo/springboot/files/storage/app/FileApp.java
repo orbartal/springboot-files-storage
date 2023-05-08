@@ -32,9 +32,9 @@ public class FileApp {
 		}
 	}
 
-	public ResponseEntity<?> readFile(String fileName) {
+	public ResponseEntity<?> readFile(String fileUid) {
 		try {
-			DownloadFileResult response = fileService.readFile(fileName);
+			DownloadFileResult response = fileService.readFile(fileUid);
 			return httpResponseFactory.buildFileResponse(response);
 		} catch (IOException e) {
 			return httpResponseFactory.buildBadRequest();
