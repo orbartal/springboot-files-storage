@@ -17,7 +17,7 @@ import orbartal.demo.springboot.files.storage.file.model.DownloadFileResult;
 import orbartal.demo.springboot.files.storage.file.model.FileMetaData;
 
 @Service
-@ConditionalOnProperty(value="file.storage.service",havingValue = "local.filesystem.temp")
+@ConditionalOnProperty(value="file.storage.service",havingValue = "filesystem")
 public class LocalFileStorageApi implements FileStorageApi {
 
 	@Value("${file.storage.temp.dir}")
