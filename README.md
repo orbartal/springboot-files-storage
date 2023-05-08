@@ -4,7 +4,7 @@ A demo of a springboot universal file storage service to upload and download fil
 
 ### Description
 
-​A demo service to manage files. It contain 2 main API:
+A demo service to manage files. It contain 2 main API:
 1. Upload a file to the service and get uid in response.
 2. Download file using a uid that belong to the file.
 
@@ -53,7 +53,7 @@ A docker-compose that enable to run this serivce with different config propertie
 
 - [Large files in REST API](https://dba-presents.com/jvm/java/278-large-files-in-rest-api)
 
-​- [Spring Boot upload file to Redis](https://frontbackend.com/spring-boot/spring-boot-upload-file-to-redis) and [code](https://github.com/martinwojtus/tutorials/tree/master/spring-boot/upload-file-to-redis)
+- [Spring Boot upload file to Redis](https://frontbackend.com/spring-boot/spring-boot-upload-file-to-redis) and [code](https://github.com/martinwojtus/tutorials/tree/master/spring-boot/upload-file-to-redis)
 
 - [Set Up Containerize and Test a Single Hadoop Cluster using Docker and Docker compose](https://www.section.io/engineering-education/set-up-containerize-and-test-a-single-hadoop-cluster-using-docker-and-docker-compose/) and [code](https://github.com/big-data-europe/docker-hadoop)
 
