@@ -20,7 +20,7 @@ import orbartal.demo.springboot.files.storage.file.model.FileMetaData;
 @ConditionalOnProperty(value="file.storage.service",havingValue = "filesystem")
 public class LocalFileStorageApi implements FileStorageApi {
 
-	@Value("${file.storage.temp.dir}")
+	@Value("${file.storage.dir}")
     private String filesDirPath;
 
 	private final DirValidator dirValidator;
