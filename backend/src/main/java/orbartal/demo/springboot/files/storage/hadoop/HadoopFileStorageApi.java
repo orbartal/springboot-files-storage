@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import orbartal.demo.springboot.files.storage.file.model.DownloadFileResult;
+import orbartal.demo.springboot.files.storage.file.model.FileMetaData;
 import orbartal.demo.springboot.files.storage.file.storage.FileStorageApi;
 
 @Service
@@ -42,13 +43,13 @@ public class HadoopFileStorageApi implements FileStorageApi {
 	}
 
 	@Override
-	public DownloadFileResult readFile(String filePathInHdfs) {
+	public DownloadFileResult readFile(FileMetaData metaData) {
 		String nodeNameUrl = hadoopPropties.getNodeNameUrl();
-		String urlDownload = hadoopWebHdfsApi.getDownloadLinkFromHadoopNameNode(nodeNameUrl, filePathInHdfs);
+		String urlDownload = hadoopWebHdfsApi.getDownloadLinkFromHadoopNameNode(nodeNameUrl, metaData.getKey());
 		byte[] content = hadoopWebHdfsApi.downloadFile(urlDownload);
 		long size = content.length;
 		InputStream body = new ByteArrayInputStream(content);
-		String name = "TODO"; //TODO: Replace with original file name
+		String name = metaData.getFileName();
 		return new DownloadFileResult(name, body, size);
 	}
 

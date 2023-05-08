@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.annotation.PostConstruct;
 import orbartal.demo.springboot.files.storage.file.model.DownloadFileResult;
+import orbartal.demo.springboot.files.storage.file.model.FileMetaData;
 
 @Service
 @ConditionalOnProperty(value="file.storage.service",havingValue = "local.filesystem.temp")
@@ -44,11 +45,11 @@ public class LocalTempFileStorageApi implements FileStorageApi {
 	}
 
 	@Override
-	public DownloadFileResult readFile(String fileName) throws IOException {
-		Path path = Paths.get(filesDirPath + fileName);
+	public DownloadFileResult readFile(FileMetaData metaData) throws IOException {
+		Path path = Paths.get(filesDirPath + metaData.getKey());
 		long fileSize = path.toFile().length();
 		InputStream body = new FileInputStream(path.toFile());
-		return new DownloadFileResult(fileName, body, fileSize);
+		return new DownloadFileResult(metaData.getFileName(), body, fileSize);
 	}
 
 }

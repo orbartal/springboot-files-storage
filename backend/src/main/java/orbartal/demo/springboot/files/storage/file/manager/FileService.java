@@ -25,7 +25,8 @@ public class FileService {
 
 	public UploadFileResult writeFile(MultipartFile file) throws IOException {
 		String key = fileStorage.writeFile(file);
-		FileMetaData metaData = new FileMetaData(UUID.randomUUID(), key, file.getOriginalFilename());
+		UUID uuid = UUID.randomUUID();
+		FileMetaData metaData = new FileMetaData(uuid, key, file.getOriginalFilename());
 		fileMetadata.writeFileMetaData(metaData);
 		return new UploadFileResult(metaData.getUid().toString());
 	}
@@ -33,7 +34,7 @@ public class FileService {
 	public DownloadFileResult readFile(String suid) throws IOException {
 		UUID uuid = UUID.fromString(suid);
 		FileMetaData metaData = fileMetadata.readFileMetaDataByUid(uuid);
-		return fileStorage.readFile(metaData.getKey());
+		return fileStorage.readFile(metaData);
 	}
 
 }
