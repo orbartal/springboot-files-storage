@@ -23,15 +23,15 @@ public class RedisFileMetadataApi implements FileMetadataApi {
 	@Override
 	public void writeFileMetaData(FileMetaData metaData) {
 		UUID uuid = metaData.getUid();
-		String value = metaData.getKey();
+		String key = metaData.getKey();
 		Optional<RedisFileMetadataEntity> pOldEntitiy = redisRepository.findById(uuid);
 		if (pOldEntitiy != null && pOldEntitiy.isPresent()) {
 			throw new RuntimeException("Duplicate uuid: " + metaData.getUid());
 		}
 		RedisFileMetadataEntity newEntitiy = new RedisFileMetadataEntity();
 		newEntitiy.setUid(uuid);
-		newEntitiy.setValue(value);
-		newEntitiy.setFileName(value);
+		newEntitiy.setFileKey(key);
+		newEntitiy.setFileName(key);
 		redisRepository.save(newEntitiy);
 	}
 
@@ -41,7 +41,7 @@ public class RedisFileMetadataApi implements FileMetadataApi {
 		Optional<RedisFileMetadataEntity> opt = redisRepository.findById(uid);
 		if (opt.isPresent()) {
 			RedisFileMetadataEntity e = opt.get();
-			return new FileMetaData(e.getUid(), e.getValue(), e.getFileName());
+			return new FileMetaData(e.getUid(), e.getFileKey(), e.getFileName());
 		}
 		return null;
 	}
