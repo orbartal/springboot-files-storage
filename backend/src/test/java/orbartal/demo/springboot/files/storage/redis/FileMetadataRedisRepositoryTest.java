@@ -41,13 +41,13 @@ public class FileMetadataRedisRepositoryTest {
 	public void writeToRedis() {
 		RedisFileMetadataEntity input = new RedisFileMetadataEntity();
 		input.setUid(UID);
-		input.setValue(VALUE);
+		input.setFileKey(VALUE);
 
 		RedisFileMetadataEntity out = redisRepository.save(input);
 
 		Assertions.assertNotNull(out);
 		Assertions.assertEquals(UID, out.getUid());
-		Assertions.assertEquals(VALUE, out.getValue());
+		Assertions.assertEquals(VALUE, out.getFileKey());
 	}
 
 	@Order(3)
@@ -57,6 +57,6 @@ public class FileMetadataRedisRepositoryTest {
 		Assertions.assertNotNull(out);
 		Assertions.assertTrue(out.isPresent());
 		Assertions.assertEquals(UID, out.get().getUid());
-		Assertions.assertEquals(VALUE, out.get().getValue());
+		Assertions.assertEquals(VALUE, out.get().getFileKey());
 	}
 }
