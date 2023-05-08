@@ -52,6 +52,10 @@ A docker-compose that enable to run this serivce with different config propertie
 ### Sources
 
 - [Large files in REST API](https://dba-presents.com/jvm/java/278-large-files-in-rest-api)
+
 ​- [Spring Boot upload file to Redis](https://frontbackend.com/spring-boot/spring-boot-upload-file-to-redis) and [code](https://github.com/martinwojtus/tutorials/tree/master/spring-boot/upload-file-to-redis)
+
 - [Set Up Containerize and Test a Single Hadoop Cluster using Docker and Docker compose](https://www.section.io/engineering-education/set-up-containerize-and-test-a-single-hadoop-cluster-using-docker-and-docker-compose/) and [code](https://github.com/big-data-europe/docker-hadoop)
-- [webhdfs api: 2 steps to upload files](https://hadoop.apache.org/docs/r1.0.4/webhdfs.html#FsURIvsHTTP_URL), [Hadoop Creating a File](https://hevodata.com
+
+- [webhdfs api: 2 steps to upload files](https://hadoop.apache.org/docs/r1.0.4/webhdfs.html#FsURIvsHTTP_URL), [Hadoop Creating a File](https://hevodata.com/learn/webhdfs/) and [Load File into HDFS through WebHDFS APIs
+](https://kontext.tech/article/460/load-file-into-hdfs-through-webhdfs-apis)
