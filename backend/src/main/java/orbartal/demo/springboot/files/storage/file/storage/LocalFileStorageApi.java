@@ -39,9 +39,9 @@ public class LocalFileStorageApi implements FileStorageApi {
 	@Override
 	public String writeFile(MultipartFile file) {
 		String fileName = file.getOriginalFilename();
-		File target = Paths.get(filesDirPath + fileName).toFile();
+		File target = Paths.get(filesDirPath, fileName).toFile();
 		writeMultipartFileIntoFile(file, target);
-		return fileName;
+		return target.getAbsolutePath();
 	}
 
 	private void writeMultipartFileIntoFile(MultipartFile inputFile, File targetFile) {
@@ -54,7 +54,7 @@ public class LocalFileStorageApi implements FileStorageApi {
 
 	@Override
 	public DownloadFileResult readFile(FileMetaData metaData) throws IOException {
-		Path path = Paths.get(filesDirPath + metaData.getKey());
+		Path path = Paths.get(metaData.getKey());
 		long fileSize = path.toFile().length();
 		InputStream body = new FileInputStream(path.toFile());
 		return new DownloadFileResult(metaData.getFileName(), body, fileSize);
