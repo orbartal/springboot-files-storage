@@ -1,5 +1,6 @@
 package orbartal.demo.springboot.files.storage.file.storage;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,12 +37,19 @@ public class LocalFileStorageApi implements FileStorageApi {
 	}
 
 	@Override
-	public String writeFile(MultipartFile file) throws IOException {
-		byte[] bytes = file.getBytes();
+	public String writeFile(MultipartFile file) {
 		String fileName = file.getOriginalFilename();
-		Path path = Paths.get(filesDirPath + fileName);
-		Files.write(path, bytes);
+		File target = Paths.get(filesDirPath + fileName).toFile();
+		writeMultipartFileIntoFile(file, target);
 		return fileName;
+	}
+
+	private void writeMultipartFileIntoFile(MultipartFile inputFile, File targetFile) {
+		try (InputStream is = inputFile.getInputStream()) {
+			Files.copy(is, targetFile.toPath());
+		}catch (Throwable t) {
+			throw new RuntimeException("Fail to write upload file into local file", t);
+		}
 	}
 
 	@Override
